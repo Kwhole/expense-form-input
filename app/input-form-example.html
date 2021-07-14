@@ -1,0 +1,49 @@
+<form class="example-form">
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <div class="example-full-width">
+          <input matInput placeholder="Expense Description" />
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <p>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Expense Amount" type="number" />
+    </mat-form-field>
+  </p>
+
+  <form
+    role="form"
+    class="example-form"
+    (ngSubmit)="f.form.valid && onSubmit()"
+    #f="ngForm"
+    novalidate
+  >
+    <label class="example-full-width" for="category_select"
+      >Expense Category</label
+    >
+    <select
+      id="category_select"
+      name="name_id"
+      [(ngModel)]="model.name_id"
+      #name_id="ngModel"
+      [ngClass]="{ 'is-invalid': f.submitted && name_id.invalid }"
+      required
+      class="example-full-width"
+    >
+      <option value="" disabled selected>Select Name</option>
+      <option *ngFor="let name of allnames" [value]="name.name_id"
+        >{{name.name}}</option
+      >
+    </select>
+  </form>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Expense Sub-Category" />
+  </mat-form-field>
+
+  <button type="submit" class="example-full-width">save</button>
+</form>
